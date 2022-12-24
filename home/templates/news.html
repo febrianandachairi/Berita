@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block start %}
+    <br>
+    <br>
+<div class="container text-center">
+    <div class="col-md-0">
+        <h3><b>Category</b></h3>
+        <ul class="list-group">
+            <li class="list-group-item"><a class="btn btn-secondary" href="{% url 'news' %}?category=technology">Technology</a></li>
+            <li class="list-group-item"><a class="btn btn-success" href="{% url 'news' %}?category=health">Health</a></li>
+            <li class="list-group-item"><a class="btn btn-danger" href="{% url 'news' %}?category=Entertainment">Entertainment</a></li>
+            <li class="list-group-item"><a class="btn btn-secondary" href="{% url 'news' %}?category=Sports">Sports</a></li>
+            <li class="list-group-item"><a class="btn btn-primary" href="{% url 'news' %}?category=Science">Science</a></li>
+            <li class="list-group-item"><a class="btn btn-info" href="{% url 'news' %}?category=Business">Business</a></li>
+        </ul>
+    </div>
+</div>
+
+
+        {% for i in articles %}
+
+                <div class="card rounded shadow-lg m-4">
+                    <img src="{{ i.urlToImage }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <p class="card-text">{{ i.author }}</p>
+                    <h5 class="card-title">{{ i.title }}</h5>
+                    <p class="card-title">{{ i.source.name }}</p>
+                    <p class="card-text">{{ i.description }}</p>
+                    <hr>
+                    <small>date: {{ i.publishedAt }}</small>
+                    <a href="{{ i.url }}" target="_blank" class="btn btn-success m-1">See News</a>
+                    </div>
+                </div>
+
+        {% endfor %}
+
+           
+
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    {% endblock %}

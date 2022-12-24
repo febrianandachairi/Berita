@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block start %}
+<section class="position-relative py-6">
+    <img class="bg-image" src="https://tse2.mm.bing.net/th?id=OIP.fbsSxVgAh4vrQzy9lVvODAHaD7&pid=Api&P=0" alt="">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="bg-white rounded-lg shadow p-5"><strong class="text-uppercase text-secondary d-inline-block mb-2 text-sm"></strong>
+            <h2 class="mb-3">Berita</h2>
+            <p class="text-muted">berita adalah suatu informasi atau laporan tentang hal yang sedang/ telah terjadi dimana penyampaiannya dilakukan melalu media cetak, siaran TV, radio, media online, maupun dari mulut ke mulut kepada khalayak umum. Pendapat lain mengatakan arti berita adalah suatu laporan informasi fakta terbaru dan penting mengenai peristiwa terkini yang disampaikan kepada masyarakat melalui berbagai media, seperti surat kabar, Televisi, radio, media online, dan berbagai media lainnya. Pada umumnya isi berita yang disampaikan kepada masyarakat adalah informasi terbaru/ terkini, atau fakta-fakta terbaru mengenai sesuatu yang terjadi di masa lalu juga dapat dijadikan berita. Selain menyampaikan informasi, tujuan lain dari berita adalah untuk mempengaruhi masyarakat terkait isu yang diangkat di dalam berita tersebut.</p><a class="btn btn-link p-0"><i class="fa fa-long-arrow-alt-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-6">
+    <div class="container">
+      <div class="row mb-5">
+        <!-- blog item-->
+        {% for blog in blogs %}
+        <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
+          <div class="card shadow border-0 h-100">
+            <a href="{% url 'berita_detail' blog.id %}">
+              <img class="img-fluid card-img-top" src="{{blog.image}}" alt="..."/></a>
+            <div class="card-body"><a class="text-uppercase text-muted text-sm letter-spacing-2" href="#">
+              {{blog.user.username}} </a>
+              <h5 class="my-2"><a class="text-dark" href="{% url 'berita_detail' blog.id %}">
+               {{blog.title}} </a></h5>
+              <p class="text-gray-500 text-sm my-3"><i class="far fa-clock mr-2"></i>
+                {{blog.created_at}}</p>
+              <!-- <p class="my-2 text-muted text-sm">
+                {{blog.content|safe}}
+              </p>
+            -->
+              <a class="btn btn-link pl-0"href="{% url 'berita_detail' blog.id %}">Read more<i class="fa fa-long-arrow-alt-right ml-2"></i></a> 
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      
+      
+      </div>
+      <!-- Pagination -->
+
+  <!-- Footer-->
+
+  
+  {% endblock %}
